@@ -292,6 +292,9 @@ static int _fiu_rc_fifo(const char *basename)
 	snprintf(npipe_path_in, PATH_MAX, "%s-%d.in", basename, getpid());
 	snprintf(npipe_path_out, PATH_MAX, "%s-%d.out", basename, getpid());
 
+	fprintf(stderr, "npipe_path_in: %s\n", npipe_path_in);
+	fprintf(stderr, "npipe_path_out: %s\n", npipe_path_out);
+
 	if (mkfifo(npipe_path_in, 0600) != 0 && errno != EEXIST) {
 		rec_count--;
 		return -1;

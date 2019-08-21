@@ -14,7 +14,7 @@ static void __attribute__((constructor)) fiu_run_init(void)
 	char *fiu_fifo_env, *fiu_enable_env;
 
 	fiu_init(0);
-
+	fprintf(stderr,"fiu_run_init()\n");
 	fiu_fifo_env = getenv("FIU_CTRL_FIFO");
 	if (fiu_fifo_env && *fiu_fifo_env != '\0') {
 		if (fiu_rc_fifo(fiu_fifo_env) < 0) {

@@ -169,12 +169,13 @@ function send_cmd_fifo() {
 	# echoes the reply
 	P=$1
 	shift 1
+	echo "SEND: $@ -> $P.in"
 	echo "$@" > $P.in
 	REPLY=$(cat "$P.out")
 	if [ "$REPLY" == "-1" ]; then
 		echo "$P: Command '$@' returned error ($REPLY)"
 	fi
-	#echo "$P: $@ -> $REPLY"
+	echo "REPLY: $P: $@ -> $REPLY"
 }
 
 for c in "${CMDS[@]}"; do
